@@ -7,6 +7,8 @@
             Vidhya Sangeetha Nrithyalaya | Elite Classical Arts Academy
         </title>
 
+        <link rel="icon" type="image/jpeg" href="images/logo.jpeg" />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -131,12 +133,12 @@
                 backdrop-filter: blur(2px);
             }
 
-            /* Navigation */
+            /* --- UPDATED NAVIGATION --- */
             .nav-bar {
                 position: fixed;
                 top: 0;
                 width: 100%;
-                padding: 1.5rem 3%;
+                padding: 1rem 3%;
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
@@ -144,11 +146,41 @@
                 mix-blend-mode: difference;
                 color: #fff;
             }
-            .brand {
-                font-weight: 700;
+
+            .brand-container {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                text-decoration: none;
+            }
+
+            .brand-logo {
+                height: 60px; /* Perfect size for header */
+                width: auto;
+                border-radius: 4px;
+                mix-blend-mode: normal; /* Keeps true colors of the logo */
+            }
+
+            .brand-text {
+                display: flex;
+                flex-direction: column;
+                font-family: "Cormorant Garamond", serif;
+                line-height: 1;
                 text-transform: uppercase;
+            }
+
+            .brand-main {
+                font-weight: 700;
+                font-size: 1.2rem;
                 letter-spacing: 1px;
             }
+
+            .brand-sub {
+                font-size: 0.8rem;
+                letter-spacing: 2px;
+                opacity: 0.8;
+            }
+
             .btn-nav {
                 padding: 0.8rem 2rem;
                 border: 1px solid #fff;
@@ -227,7 +259,7 @@
                 }
             }
 
-            /* Disciplines (UPDATED: Always Visible) */
+            /* Disciplines (Always Visible) */
             .disciplines-split {
                 display: flex;
                 height: 90vh;
@@ -243,7 +275,7 @@
                 justify-content: flex-end;
                 transition: color 0.5s var(--ease);
                 overflow: hidden;
-                color: #fff; /* Text always white for readability over image */
+                color: #fff;
             }
             .d-reveal-img {
                 position: absolute;
@@ -252,7 +284,7 @@
                 width: 100%;
                 height: 100%;
                 z-index: -1;
-                opacity: 1; /* Changed from 0 to 1 so image is always seen */
+                opacity: 1;
                 transform: scale(1.1);
                 transition: all 0.6s var(--ease);
             }
@@ -260,25 +292,15 @@
                 content: "";
                 position: absolute;
                 inset: 0;
-                background: rgba(
-                    0,
-                    0,
-                    0,
-                    0.5
-                ); /* Darker overlay to make text pop */
+                background: rgba(0, 0, 0, 0.5);
                 transition: background 0.5s ease;
             }
 
             .discipline-col:hover .d-reveal-img {
-                transform: scale(1); /* Subtle zoom effect on hover */
+                transform: scale(1);
             }
             .discipline-col:hover .d-reveal-img::after {
-                background: rgba(
-                    0,
-                    0,
-                    0,
-                    0.3
-                ); /* Lighten overlay slightly on hover */
+                background: rgba(0, 0, 0, 0.3);
             }
             .discipline-col .h3-sub {
                 opacity: 1;
@@ -440,6 +462,9 @@
                 .cursor-outline {
                     display: none;
                 }
+                .brand-text {
+                    display: none;
+                } /* On mobile, show only logo for cleanliness */
                 * {
                     cursor: auto;
                 }
@@ -451,7 +476,13 @@
         <div class="cursor-outline"></div>
 
         <nav class="nav-bar">
-            <div class="brand">VS Nrithyalaya</div>
+            <a href="#" class="brand-container hover-target">
+                <img src="images/logo.jpeg" alt="VSN Logo" class="brand-logo" />
+                <div class="brand-text">
+                    <span class="brand-main">Vidhya Sangeetha</span>
+                    <span class="brand-sub">Nrithyalaya</span>
+                </div>
+            </a>
             <a href="#contact" class="btn-nav hover-target">Book Free Demo</a>
         </nav>
 
@@ -474,7 +505,7 @@
                 </p>
             </div>
             <div class="hero-img-mask fade-up" style="transition-delay: 0.3s">
-                <img src="images/image_0.jpeg" alt="R. Vidhya Lakshmi" />
+                <img src="images/image_0.png" alt="R. Vidhya Lakshmi" />
             </div>
         </main>
 
