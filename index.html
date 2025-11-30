@@ -30,7 +30,6 @@
                 margin: 0;
                 padding: 0;
                 box-sizing: border-box;
-                cursor: none;
             }
 
             html {
@@ -48,12 +47,16 @@
                 text-decoration: none;
                 color: inherit;
             }
+
+            /* GLOBAL IMAGE RULE: Default to top alignment for safety */
             img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
+                object-position: top center;
                 display: block;
             }
+
             section {
                 padding: 8rem 5%;
                 position: relative;
@@ -72,7 +75,7 @@
 
             .h1-huge {
                 font-family: "Cormorant Garamond", serif;
-                font-size: clamp(3.5rem, 11vw, 11rem);
+                font-size: clamp(3.5rem, 11vw, 10rem);
                 line-height: 0.85;
                 text-transform: uppercase;
                 letter-spacing: -0.04em;
@@ -226,7 +229,7 @@
                 position: relative;
             }
 
-            /* HERO SLIDER STYLES */
+            /* Hero Slider - THE FIX IS HERE */
             .hero-slide {
                 position: absolute;
                 top: 0;
@@ -234,7 +237,8 @@
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                object-position: top center; /* Focus on faces */
+                /* Center the image so hands and head are visible */
+                object-position: center center !important;
                 transform: scale(1.05);
                 opacity: 0;
                 transition: opacity 1.5s ease-in-out;
@@ -304,6 +308,7 @@
                 object-position: top center;
                 transform: scale(1);
             }
+
             .d-reveal-img::after {
                 content: "";
                 position: absolute;
@@ -346,26 +351,35 @@
                 margin: 3rem 0;
             }
 
+            /* --- GALLERY --- */
             .gallery-strip {
                 display: flex;
                 gap: 2rem;
                 overflow-x: auto;
                 padding-bottom: 3rem;
                 scrollbar-width: none;
-                cursor: grab; /* Shows user it's draggable */
+                cursor: grab;
+            }
+            .gallery-strip::-webkit-scrollbar {
+                display: none;
             }
             .gallery-strip:active {
                 cursor: grabbing;
             }
 
             .gallery-item {
-                min-width: 400px;
-                height: 500px;
+                min-width: 550px;
+                height: 400px;
                 flex-shrink: 0;
                 border-radius: 12px;
                 overflow: hidden;
                 position: relative;
             }
+            .gallery-item img {
+                object-fit: cover;
+                object-position: center center;
+            }
+
             .gallery-caption {
                 position: absolute;
                 bottom: 0;
@@ -440,7 +454,7 @@
             }
 
             /* =========================================
-           TABLET OPTIMIZATIONS (iPad Mini/Air)
+           TABLET OPTIMIZATIONS (iPad Mini & Air)
            ========================================= */
             @media (min-width: 768px) and (max-width: 1024px) {
                 .h1-huge {
@@ -449,24 +463,40 @@
                 section {
                     padding: 6rem 3%;
                 }
+
                 .hero {
-                    padding-top: 6rem;
-                    gap: 1rem;
+                    padding-top: 8rem;
+                    gap: 2rem;
+                    grid-template-columns: 1fr 1fr;
                 }
                 .hero-img-mask {
+                    height: 50vh;
+                    width: 100%;
+                    border-radius: 100px 100px 0 0;
+                }
+
+                .disciplines-split {
+                    flex-direction: row;
                     height: 60vh;
                 }
                 .discipline-col {
                     padding: 2rem;
                 }
+
                 .about-grid {
+                    grid-template-columns: 1fr 1fr;
                     gap: 3rem;
                 }
                 .about-img-wrapper {
                     height: 400px;
+                    width: 100%;
                 }
+
                 .nav-bar {
-                    padding: 1rem 2%;
+                    padding: 1rem 3%;
+                }
+                .brand-logo {
+                    height: 50px;
                 }
                 .brand-main {
                     font-size: 1rem;
@@ -474,10 +504,15 @@
                 .brand-sub {
                     font-size: 0.7rem;
                 }
+
+                .gallery-item {
+                    min-width: 400px;
+                    height: 300px;
+                }
             }
 
             /* =========================================
-           MOBILE OPTIMIZATIONS (Phones)
+           MOBILE OPTIMIZATIONS (Phones Only)
            ========================================= */
             @media (max-width: 767px) {
                 section {
@@ -512,10 +547,6 @@
                     border-radius: 12px;
                     order: 2;
                 }
-                .hero-slide {
-                    object-position: top center;
-                } /* Fix for mobile heads */
-
                 .disciplines-split {
                     flex-direction: column;
                     height: auto;
@@ -526,10 +557,6 @@
                     border-right: none;
                     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
                 }
-                .d-reveal-img img {
-                    object-position: top center;
-                }
-
                 .about-grid {
                     grid-template-columns: 1fr;
                     gap: 3rem;
@@ -538,10 +565,12 @@
                     height: 350px;
                     width: 100%;
                 }
+
                 .gallery-item {
                     min-width: 85vw;
-                    height: 400px;
+                    height: 300px;
                 }
+
                 .schedule-row {
                     flex-direction: column;
                     gap: 0.5rem;
