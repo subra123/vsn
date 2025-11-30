@@ -48,7 +48,7 @@
                 color: inherit;
             }
 
-            /* GLOBAL IMAGE RULE: Default to top alignment for safety */
+            /* GLOBAL IMAGE RULE */
             img {
                 width: 100%;
                 height: 100%;
@@ -229,7 +229,7 @@
                 position: relative;
             }
 
-            /* Hero Slider - THE FIX IS HERE */
+            /* Hero Slider */
             .hero-slide {
                 position: absolute;
                 top: 0;
@@ -237,8 +237,7 @@
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
-                /* Center the image so hands and head are visible */
-                object-position: center center !important;
+                object-position: center 30%;
                 transform: scale(1.05);
                 opacity: 0;
                 transition: opacity 1.5s ease-in-out;
@@ -351,7 +350,7 @@
                 margin: 3rem 0;
             }
 
-            /* --- GALLERY --- */
+            /* --- GALLERY (Desktop Default - REDUCED SIZE) --- */
             .gallery-strip {
                 display: flex;
                 gap: 2rem;
@@ -368,8 +367,9 @@
             }
 
             .gallery-item {
-                min-width: 550px;
-                height: 400px;
+                /* Desktop: Smaller, Sleeker Vertical Cards */
+                min-width: 300px;
+                height: 420px;
                 flex-shrink: 0;
                 border-radius: 12px;
                 overflow: hidden;
@@ -505,9 +505,10 @@
                     font-size: 0.7rem;
                 }
 
+                /* --- IPAD GALLERY: WIDE but SMALLER --- */
                 .gallery-item {
-                    min-width: 400px;
-                    height: 300px;
+                    min-width: 450px; /* Reduced width */
+                    height: 320px; /* Reduced height */
                 }
             }
 
@@ -547,6 +548,10 @@
                     border-radius: 12px;
                     order: 2;
                 }
+                .hero-slide {
+                    object-position: center top;
+                }
+
                 .disciplines-split {
                     flex-direction: column;
                     height: auto;
@@ -557,6 +562,10 @@
                     border-right: none;
                     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
                 }
+                .d-reveal-img img {
+                    object-position: top center;
+                }
+
                 .about-grid {
                     grid-template-columns: 1fr;
                     gap: 3rem;
@@ -566,9 +575,10 @@
                     width: 100%;
                 }
 
+                /* Mobile Gallery: Tall but Smaller */
                 .gallery-item {
                     min-width: 85vw;
-                    height: 300px;
+                    height: 350px;
                 }
 
                 .schedule-row {
@@ -794,7 +804,7 @@
                     personalized attention.
                 </p>
                 <p class="h3-sub" style="color: var(--gold)">
-                    Fees: ₹700/mo (India) | ₹2000/mo (International)
+                    Fees: ₹800/mo (India) | ₹2000/mo (International)
                 </p>
             </div>
             <div
